@@ -1,0 +1,52 @@
+<h1>Listado de Heroes</h1>
+<mat-divider></mat-divider><br />
+
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="20px"
+>
+  <div
+    fxFlex="30"
+    fxFlex.lg="20"
+    fxFlex.xl="15"
+    fxFlex.sm="35"
+    fxFlex.xs="50"
+    *ngFor="let heroe of heroes"
+  >
+    <app-heroe-tarjeta [heroe]="heroe"></app-heroe-tarjeta>
+  </div>
+</div>
+<hr />
+<mat-divider></mat-divider>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID-HEROE</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="alter_ego">
+    <th mat-header-cell *matHeaderCellDef>PROTAGONISTA</th>
+    <td mat-cell *matCellDef="let element">{{ element.alter_ego }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="superhero">
+    <th mat-header-cell *matHeaderCellDef>HEROE</th>
+    <td mat-cell *matCellDef="let element">{{ element.superhero }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="character">
+    <th mat-header-cell *matHeaderCellDef>ACTORES</th>
+    <td mat-cell *matCellDef="let element">{{ element.characters }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="publisher">
+    <th mat-header-cell *matHeaderCellDef>COMIC</th>
+    <td mat-cell *matCellDef="let element">{{ element.publisher }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
